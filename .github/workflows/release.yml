@@ -7,8 +7,8 @@ on:
 jobs:
   create-release:
     name: "Create GitHub release"
-    # only publish from the origin repository
-    if: github.repository_owner == 'xd009642'
+    # # only publish from the origin repository
+    # if: github.repository_owner == 'xd009642'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,14 +17,14 @@ jobs:
           changelog: CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  crates:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: publish package to crates
-        run: |
-          cargo package
-          cargo publish --token ${{ secrets.CARGO_TOKEN }}
+  # crates:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: publish package to crates
+  #       run: |
+  #         cargo package
+  #         cargo publish --token ${{ secrets.CARGO_TOKEN }}
 
   binaries:
     name: "Upload release binaries"
